@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./db_migration/1-create_transaction_table.sql:/docker-entrypoint-initdb.d/1-create_transaction_table.sql
+      - ./db_migration/2-insert_1000_bitcoins.sql:/docker-entrypoint-initdb.d/2-insert_1000_bitcoins.sql
+  app:
+    image: wallet
+    ports:
+      - "8090:8090"
