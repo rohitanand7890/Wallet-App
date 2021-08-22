@@ -1,0 +1,28 @@
+CREATE TABLE transaction(
+    id SERIAL,
+    amount DOUBLE PRECISION NOT NULL,
+    balance DOUBLE PRECISION NOT NULL,
+    datetime TIMESTAMP WITH TIME ZONE NOT NULL
+);
+
+
+INSERT INTO transaction ( amount, datetime, balance )
+VALUES(10, '2015-08-03 22:00:00.0', (SELECT
+(CASE WHEN max(balance) IS NULL THEN 0 ELSE max(balance) END)
+FROM transaction) + 10);
+
+SELECT  max(balance) FROM transaction having count(*) > 0;
+
+SELECT
+(CASE WHEN (max(balance) IS NULL ) THEN 0 ELSE max(balance) END)
+FROM transaction;
+
+
+select
+  amount,
+  date_trunc('hour', datetime),
+  datetime,-- or hour, day, week, month, year
+  count(1)
+
+from transaction WHERE datetime BETWEEN '2019-05-01' AND '2020-12-31 23:59:59'
+group by 1,2,3  order by datetime desc;
