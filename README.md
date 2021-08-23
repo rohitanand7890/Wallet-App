@@ -6,6 +6,7 @@ Features:
 
 ## Assumptions made
 
+- The transactions must be ordered by time.
 - 1000 Bitcoin is credited at application start time as stated in the requirement doc. Check `db_migration/2-insert_1000_bitcoins.sql`
 - The credit transactions can come from different timezones, and the transaction datetime needs to be parsed considering the zone info.
 - The response to find wallet balance would present all datetimes in UTC. 
