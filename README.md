@@ -80,6 +80,11 @@ Unit Tests is written for the main business logic, i.e. `WalletControllerTest.ja
 
 Integration test is added at the controller layer, i.e. `WalletBalanceCalculatorTest.java`.
 
+The tests can be executed by running 
+    
+    ./gradlew clean test
+
+
 ## Packaging 
 
 The application is packaged in a docker image.
@@ -120,3 +125,4 @@ Wallet DB
 - Rate limiting / Circuit breaker for app resilience
 - Improve inline java docs
 - Add metrics for monitoring application
+
